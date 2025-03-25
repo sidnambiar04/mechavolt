@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechaVolt - Our Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-image: url('./img/homebg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            color: #333;
+        }
+        
+        header {
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #228b22;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 30px;
+            color: #228b22;
+            cursor: pointer;
+        }
+
+        .logo {
+            height: 80px;
+        }
+        
+        .logo img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./img/homebg.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 80px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #228b22;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #228b22;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            color: #228b22;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #228b22;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .service-btn:hover {
+            background-color: #176417;
+        }
+
+        .cta-section {
+            background-color: #228b22;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background-color: white;
+            color: #228b22;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #f1f1f1;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #4CAF50;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/logo/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/login">Login/Register</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">≡</div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <h1>Our Premier Vehicle Services</h1>
+        <p>One Click Away From Finding The Best Solution For Your Vehicle</p>
+        <a href="./appointment.html" class="cta-button">Book an appointment!</a>
+    </section>
+
+    <section class="services-section">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="./img/ev charging statiion.jpg" alt="EV Charging Station">
+                </div>
+                <div class="service-content">
+                    <h3>EV Charging Station</h3>
+                    <p>Access our network of fast-charging stations designed to get you back on the road quickly. Compatible with all major electric vehicle models.</p>
+                    <a href="#" class="service-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="./img/vehiclerepairnservice.jpg" alt="Vehicle Repair and Servicing">
+                </div>
+                <div class="service-content">
+                    <h3>Vehicle Repair and Servicing</h3>
+                    <p>Keep your vehicle in optimal condition with our comprehensive repair and maintenance services performed by certified technicians.</p>
+                    <a href="#" class="service-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="./img/battery repair.jpg" alt="Car Battery Repair">
+                </div>
+                <div class="service-content">
+                    <h3>Car Battery Repair and Servicing</h3>
+                    <p>Specialized maintenance and repair services for all types of vehicle batteries, with focus on extending battery life and performance.</p>
+                    <a href="#" class="service-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="./img/software update.jpg" alt="Software Support">
+                </div>
+                <div class="service-content">
+                    <h3>Software Support and Updates</h3>
+                    <p>Stay current with the latest vehicle software updates and diagnose electronic issues with our cutting-edge technical support.</p>
+                    <a href="#" class="service-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="./img/roadside service1.jpg" alt="Roadside Assistance">
+                </div>
+                <div class="service-content">
+                    <h3>Roadside Assistance</h3>
+                    <p>24/7 emergency support for breakdowns, flat tires, battery issues, and more. We're just a call away whenever you need help on the road.</p>
+                    <a href="#" class="service-btn">Learn More</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="./img/insurance.jpg" alt="Vehicle Insurance">
+                </div>
+                <div class="service-content">
+                    <h3>Vehicle Insurance</h3>
+                    <p>Comprehensive insurance solutions tailored to your vehicle and driving needs with competitive rates and excellent coverage options.</p>
+                    <a href="#" class="service-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="appointment">
+        <h2>Ready to Get Your Vehicle Serviced?</h2>
+        <p>Our expert technicians are ready to help you with all your vehicle needs. Book an appointment today and experience our premium service.</p>
+        <a href="#" class="cta-button">Schedule Now</a>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MechaVolt</h3>
+                <p>At MechaVolt, we provide top-quality vehicle services with a commitment to excellence and customer satisfaction.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="./home.html">Home</a>
+                <a href="./services.html">Services</a>
+                <a href="./about.html">About Us</a>
+                <a href="#appointment">Book Appointment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Pillai College Of Engineering, New Panvel</p>
+                <p>Phone: +91 7506032398</p>
+                <p>Email: info@mechavolt.com</p>
+                <div class="social-links">
+                    <a href="#"><span>FB</span></a>
+                    <a href="#"><span>TW</span></a>
+                    <a href="#"><span>IG</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 MechaVolt. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

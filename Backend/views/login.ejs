@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slideshow-wrapper">
+            <img src="/images/ev station.jpg" alt="Slide 1" class="slide active">
+            <img src="/images/car mechanic.jpg" alt="Slide 2" class="slide">
+            <img src="/images/workshop.jpg" alt="Slide 3" class="slide">
+            <img src="/images/ev station 3.jpg" alt="Slide 4" class="slide">
+            <img src="/images/ev station 2.jpg" alt="Slide 5" class="slide">
+        </div>
+    </div>
+
+    <div class="login-wrapper">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Welcome Back</h2>
+                <p>Sign in to continue to your account</p>
+            </div>
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="register-link">Don't have an account? <a href="./register.html">Register</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlideIndex = 0;
+
+        function changeSlide() {
+            // Remove active class from current slide
+            slides[currentSlideIndex].classList.remove('active');
+
+            // Move to next slide
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+
+            // Add active class to new slide
+            slides[currentSlideIndex].classList.add('active');
+        }
+
+        // Automatically change slide every 4 seconds
+        setInterval(changeSlide, 4000);
+    </script>
+</body>
+</html>

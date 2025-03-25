@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechaVolt - Appointment Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-image: url('./img/homebg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            color: #333;
+        }
+        
+        header {
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: #228b22;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 30px;
+            color: #228b22;
+            cursor: pointer;
+        }
+
+        .logo {
+            height: 80px;
+        }
+        
+        .logo img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('./img/homebg.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 20px 80px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .appointment-section {
+            background-color: white;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #228b22;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #228b22;
+        }
+
+        .appointment-form {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .appointment-form label {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .appointment-form select,
+        .appointment-form input {
+            padding: 12px;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .appointment-form select:focus,
+        .appointment-form input:focus {
+            border-color: #228b22;
+        }
+
+        .appointment-form button {
+            padding: 12px 30px;
+            background-color: #228b22;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .appointment-form button:hover {
+            background-color: #176417;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #4CAF50;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/logo/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./login.html">Login/Register</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contacts.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <h1>Book Your Appointment</h1>
+        <p>Fill in the details below to schedule your vehicle service appointment with us.</p>
+    </section>
+
+    <section class="appointment-section">
+        <div class="section-title">
+            <h2>Appointment Form</h2>
+        </div>
+        <form class="appointment-form" action="/submit-appointment" method="POST">
+            <label for="vehicle-type">Vehicle Type</label>
+            <select id="vehicle-type" name="vehicle-type" required>
+                <option value="">Select Vehicle Type</option>
+                <option value="2wheeler">2 Wheeler</option>
+                <option value="4wheeler">4 Wheeler</option>
+            </select>
+
+            <label for="service-required">Service Required</label>
+            <select id="service-required" name="service-required" required>
+                <option value="">Select Service</option>
+                <option value="repair">Vehicle Repair</option>
+                <option value="charging">EV Charging</option>
+                <option value="battery">Battery Repair</option>
+                <option value="software">Software Support</option>
+                <option value="roadside">Roadside Assistance</option>
+                <option value="insurance">Vehicle Insurance</option>
+            </select>
+
+            <label for="vehicle-model">Vehicle Model</label>
+            <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Enter vehicle model" required>
+
+            <label for="contact-number">Contact Number</label>
+            <input type="tel" id="contact-number" name="contact-number" placeholder="Enter your contact number" required>
+
+            <label for="availability-time">Preferred Time</label>
+            <input type="datetime-local" id="availability-time" name="availability-time" required>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MechaVolt</h3>
+                <p>At MechaVolt, we provide top-quality vehicle services with a commitment to excellence and customer satisfaction.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="./home.html">Home</a>
+                <a href="./services.html">Services</a>
+                <a href="./about.html">About Us</a>
+                <a href="./appointment.html">Book Appointment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Pillai College Of Engineering, New Panvel</p>
+                <p>Phone: +91 7506032398</p>
+                <p>Email: info@mechavolt.com</p>
+                <div class="social-links">
+                    <a href="#">FB</a>
+                    <a href="#">TW</a>
+                    <a href="#">IG</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 MechaVolt. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

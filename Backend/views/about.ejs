@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" href="img/logo/icon.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #c7f9cc;
+            background-image: url('./img/aboutbg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            position: relative;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            padding: 20px 0;
+            width: 100%;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 80px;
+        }
+
+        .logo img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2E7D32;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 30px;
+            color: #228b22;
+            cursor: pointer;
+        }
+
+        .aboutus {
+            text-align: center;
+            padding: 120px 20px 50px;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+            margin-bottom: 30px;
+        }
+
+        .aboutus h3 {
+            color: #4CAF50;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .aboutus h1 {
+            font-size: 2.5rem;
+            color: #222;
+            line-height: 1.3;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 40px;
+            background-color: rgba(232, 245, 233, 0.9);
+            border-radius: 12px;
+            color: #333;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #4CAF50;
+        }
+
+        .about ul {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .about li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .why-choose-us {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: rgba(232, 245, 233, 0.9);
+            border-radius: 12px;
+            color: #333;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #4CAF50;
+        }
+
+        .why-choose-us h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .why-choose-us h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #4CAF50;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .feature-icon {
+            background-color: #4CAF50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-content h3 {
+            color: #2E7D32;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .feature-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .appointment-section {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: rgba(76, 175, 80, 0.1);
+            margin: 40px auto;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .appointment-section h2 {
+            color: #2E7D32;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .appointment-section p {
+            color: #444;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .appointment-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .appointment-btn:hover {
+            background-color: #2E7D32;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .team {
+            text-align: center;
+            padding: 50px 20px 70px;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team h2 {
+            color: #4CAF50;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .team h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #4CAF50;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .team-member {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #4CAF50;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .member-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #4CAF50;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .team-member:hover .member-avatar::before {
+            opacity: 1;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .member-email {
+            font-size: 0.9rem;
+            color: #666;
+            word-break: break-all;
+            margin-bottom: 15px;
+        }
+
+        .member-links {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .member-links a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .member-links a:hover {
+            color: #2E7D32;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #4CAF50;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .aboutus h1 {
+                font-size: 2rem;
+            }
+            
+            .aboutus h3 {
+                font-size: 1.6rem;
+            }
+            
+            .why-choose-us h2, .team h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about, .why-choose-us {
+                padding: 25px;
+            }
+            
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./img/logo/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="./home.html">Home</a></li>
+                <li><a href="./login.html">Login/Register</a></li>
+                <li><a href="./services.html">Services</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./contacts.html">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">≡</div>
+        </nav>
+    </header>
+
+    <div class="aboutus">
+        <h3>ABOUT US</h3>
+        <h1>In a Journey to build the most trusted Vehicle Service Network</h1>
+    </div>
+
+    <div class="about">
+        Welcome to MechaVolt, your one-stop solution for finding EV charging stations and mechanical services for your vehicle. Whether you need to charge your electric vehicle or find a trusted garage for repairs, we've got you covered!
+        <ul>
+            <li>🚗 For Drivers: Easily locate nearby charging stations and auto repair shops with real-time availability. Get detailed service information and contact mechanics directly through our platform.</li>
+            <li>🔧 For Shop Owners: Register your shop, showcase your services, and connect with potential customers looking for EV charging or vehicle repairs.</li>
+            <li>🌍 Our Mission: To simplify vehicle maintenance and charging by bridging the gap between drivers and service providers through technology.</li>
+        </ul>
+        Join us and experience hassle-free vehicle service at your fingertips!
+    </div>
+
+    <div class="why-choose-us">
+        <h2>Why Choose MechaVolt?</h2>
+        <div class="features">
+            <div>
+                <div class="feature">
+                    <div class="feature-icon">1</div>
+                    <div class="feature-content">
+                        <h3>Certified Technicians</h3>
+                        <p>Our network consists of highly trained and certified professionals with extensive experience in both traditional and electric vehicles.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">2</div>
+                    <div class="feature-content">
+                        <h3>Transparent Pricing</h3>
+                        <p>No hidden costs or surprises. We believe in complete transparency about service costs before any work begins.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">3</div>
+                    <div class="feature-content">
+                        <h3>Advanced Diagnostics</h3>
+                        <p>Utilizing the latest diagnostic tools to accurately identify issues and provide precise solutions for your vehicle.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="feature">
+                    <div class="feature-icon">4</div>
+                    <div class="feature-content">
+                        <h3>Nationwide Coverage</h3>
+                        <p>With our extensive network of service centers and charging stations, help is never far away no matter where you are.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">5</div>
+                    <div class="feature-content">
+                        <h3>Real-time Tracking</h3>
+                        <p>Track your service status in real-time through our user-friendly app and receive instant updates on completion.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">6</div>
+                    <div class="feature-content">
+                        <h3>Eco-friendly Approach</h3>
+                        <p>Our services promote sustainable practices and support the transition to cleaner transportation alternatives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="team">
+        <h2>Team Members</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <div class="member-avatar">SN</div>
+                <div class="member-name">Sidharth Nambiar</div>
+                <div class="member-email">nsidharth23comp@student.mes.ac.in</div>
+                <div class="member-links">
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">JN</div>
+                <div class="member-name">Jishnu Nair</div>
+                <div class="member-email">njishnu23comp@student.mes.ac.in</div>
+                <div class="member-links">
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">AN</div>
+                <div class="member-name">Aaditya Nair</div>
+                <div class="member-email">naaditya23como@student.mes.ac.in</div>
+                <div class="member-links">
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MechaVolt</h3>
+                <p>At MechaVolt, we provide top-quality vehicle services with a commitment to excellence and customer satisfaction.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="./home.html">Home</a>
+                <a href="./services.html">Services</a>
+                <a href="./about.html">About Us</a>
+                <a href="#appointment">Book Appointment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Pillai College Of Engineering, New Panvel</p>
+                <p>Phone: +91 7506032398</p>
+                <p>Email: info@mechavolt.com</p>
+                <div class="social-links">
+                    <a href="#"><span>FB</span></a>
+                    <a href="#"><span>TW</span></a>
+                    <a href="#"><span>IG</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 MechaVolt. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
