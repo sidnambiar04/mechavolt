@@ -7,7 +7,7 @@ import { Pool } from "pg"; // Import Pool from pg
 
 const app = express();              
 const PORT = 3000;                   
-
+//new
 // Correctly define __filename and __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = pathDirname(__filename); // Use 'pathDirname' to avoid conflict
