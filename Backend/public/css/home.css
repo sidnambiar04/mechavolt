@@ -7,7 +7,7 @@
 
 
 body {
-    background-image: url('./img/homebg.png');
+    background-image: url('/images/homebg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
