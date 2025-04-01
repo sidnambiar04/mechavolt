@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - <%= serviceName %></title>
+    <link rel="stylesheet" href="/css/software-services-admin.css"> <!-- Add your admin CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard - <%= serviceName %></h1>
+        <a href="/admin/dashboard">Back to Dashboard</a>
+    </header>
+
+    <main>
+        <section class="software-services-list">
+            <h2>Software Services</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Estimated Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% softwareServices.forEach(service => { %>
+                        <tr>
+                            <td><%= service.id %></td>
+                            <td><%= service.name %></td>
+                            <td><%= service.estimated_amount %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

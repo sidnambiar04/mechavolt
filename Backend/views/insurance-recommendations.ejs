@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Recommendations</title>
+    <link rel="stylesheet" href="/css/insurance-recommendations.css"> <!-- Add a CSS file for styling -->
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/images/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="recommendations">
+            <h1>Insurance Recommendations</h1>
+            <ul>
+                <% recommendations.forEach((recommendation) => { %>
+                    <li><%= recommendation %></li>
+                <% }); %>
+            </ul>
+            <a href="/insurance-advisor" class="back-btn">Go Back</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MechaVolt. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

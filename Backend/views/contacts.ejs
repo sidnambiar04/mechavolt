@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - MechaVolt</title>
-    <link rel="icon" href="img/logo/icon.png" type="image/png">
+    <link rel="icon" href="images/logo/icon.png" type="image/png">
     <link rel="stylesheet" href="css/contacts.css"> 
 </head>
 <body>
@@ -15,7 +15,11 @@
             </div>
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>
-                <li><a href="/login">Login/Register</a></li>
+                <% if (user) { %>
+                    <li><a href="/logout">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login/Register</a></li>
+                <% } %>
                 <li><a href="/services">Services</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contacts">Contact</a></li>
@@ -25,7 +29,7 @@
     </header>
     <div class="cont">
         <p>If you have any questions or feedback about our products or services,<br> please feel free to contact us through any of the<br> following channels.</p>
-        <img src="/img/activa.png" alt="Bike Image">
+        <img src="/images/activa.png" alt="Bike Image">
     </div>
     <div class="container">
         <section class="contact-section">
@@ -62,6 +66,18 @@
             <p style="margin-top: 10px; font-size: 0.9em;">Click on the map to open in Google Maps.</p>
         </section>
     </div>
+
+    <div id="chatbot-container">
+        <button id="chatbot-button" onclick="toggleChatbot()">💬</button>
+        <div id="chatbot-iframe-container">
+            <iframe
+                id="chatbot-iframe"
+                src="https://www.chatbase.co/chatbot-iframe/m9O_0DISZ33RwcTzoWqZk"
+                frameborder="0"
+                allow="microphone"
+            ></iframe>
+        </div>
+    </div>
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
@@ -95,6 +111,14 @@
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
+        }
+        function toggleChatbot() {
+            const iframeContainer = document.getElementById('chatbot-iframe-container');
+            if (iframeContainer.style.display === 'none' || iframeContainer.style.display === '') {
+                iframeContainer.style.display = 'block';
+            } else {
+                iframeContainer.style.display = 'none';
+            }
         }
     </script>
 </body>

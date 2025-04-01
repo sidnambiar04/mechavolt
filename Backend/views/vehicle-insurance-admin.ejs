@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - <%= serviceName %></title>
+    <link rel="stylesheet" href="/css/vehicle-insurance-admin.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard - <%= serviceName %></h1>
+        <a href="/admin/dashboard">Back to Dashboard</a>
+    </header>
+
+    <main>
+        <section class="insurance-list">
+            <h2>Vehicle Insurance Providers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Claim Settlement Ratio</th>
+                        <th>Website</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% vehicleInsuranceProviders.forEach(provider => { %>
+                        <tr>
+                            <td><%= provider.name %></td>
+                            <td><%= provider.claimSettlementRatio %></td>
+                            <td><a href="<%= provider.website %>" target="_blank">Visit Website</a></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

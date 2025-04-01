@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .repair-shops-list {
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </header>
+    <main>
+        <section class="dashboard-cards">
+            <% services.forEach(service => { %>
+                <div class="card">
+                    <h3><%= service.name %></h3>
+                    <p><%= service.shop_count %> Shops Listed</p>
+                    <a href="/admin/shops/<%= service.name %>" class="view-btn">View Shops</a>
+                </div>
+            <% }); %>
+        </section>
+    </main>
+    <div id="chatbot-container">
+        <button id="chatbot-button" onclick="toggleChatbot()">💬</button>
+        <div id="chatbot-iframe-container">
+            <iframe
+                id="chatbot-iframe"
+                src="https://www.chatbase.co/chatbot-iframe/m9O_0DISZ33RwcTzoWqZk"
+                frameborder="0"
+                allow="microphone"
+            ></iframe>
+        </div>
+    </div>
+    <script>
+        function toggleChatbot() {
+        const iframeContainer = document.getElementById('chatbot-iframe-container');
+        if (iframeContainer.style.display === 'none' || iframeContainer.style.display === '') {
+            iframeContainer.style.display = 'block';
+        } else {
+            iframeContainer.style.display = 'none';
+        }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= service.name %> - Details</title>
+    <link rel="stylesheet" href="/css/software-service-details.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <header>
+        <h1><%= service.name %></h1>
+    </header>
+
+    <main>
+        <section class="service-details">
+            <img src="<%= service.image %>" alt="<%= service.name %>">
+            <p class="details-text"><%= service.brief_info %></p>
+            <p><strong>Estimated Amount:</strong> <%= service.estimated_amount %></p>
+            <a href="/software-services" class="back-btn">Back to List</a>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Repair and Servicing Shops</title>
+    <link rel="stylesheet" href="/css/repair-shops.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> <!-- Leaflet CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> <!-- Leaflet JS -->
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/images/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Vehicle Repair and Servicing Shops</h1>
+    </header>
+
+    <main>
+        <!-- Geolocation Button -->
+        <section class="user-location">
+            <button id="get-location-btn">Get My Location</button>
+            <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+        </section>
+
+        <!-- Shops List -->
+        <section class="shops-list">
+            <h2>Available Shops</h2>
+            <div class="shops-grid">
+                <% repairShops.forEach((shop) => { %>
+                    <div class="shop-card">
+                        <div class="shop-image">
+                            <img src="<%= shop.image %>" alt="<%= shop.name %>">
+                        </div>
+                        <div class="shop-content">
+                            <h3><%= shop.name %></h3>
+                            <p><strong>Time:</strong> <%= shop.time %></p>
+                            <p><strong>Contact:</strong> <%= shop.contact %></p>
+                            <div class="stars">
+                                <% for (let i = 1; i <= 5; i++) { %>
+                                    <% if (i <= Math.floor(shop.rating)) { %>
+                                        <span>&#9733;</span> <!-- Filled star -->
+                                    <% } else { %>
+                                        <span>&#9734;</span> <!-- Empty star -->
+                                    <% } %>
+                                <% } %>
+                            </div>
+                            <a href="/repair-shops/<%= shop.id %>" class="details-btn">View Details</a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([18.9894, 73.1175], 13); // Default center (Panvel)
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add repair shop markers
+        const repairShops = <%- JSON.stringify(repairShops) %>; // Pass repairShops data from the server
+        repairShops.forEach((shop) => {
+            L.marker([shop.latitude, shop.longitude])
+                .addTo(map)
+                .bindPopup(`<b>${shop.name}</b><br>${shop.time}<br>${shop.contact}`);
+        });
+
+        // Geolocation button functionality
+        document.getElementById('get-location-btn').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Center the map on the user's location
+                    map.setView([userLat, userLng], 14);
+
+                    // Add a marker for the user's location
+                    L.marker([userLat, userLng])
+                        .addTo(map)
+                        .bindPopup("You are here")
+                        .openPopup();
+                }, (error) => {
+                    alert("Unable to retrieve your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= service.type %> - Details</title>
+    <link rel="stylesheet" href="/css/battery-service-details.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <header>
+        <h1><%= service.type %></h1>
+    </header>
+
+    <main>
+        <section class="service-details">
+            <img src="<%= service.image %>" alt="<%= service.type %>">
+            <p class="details-text"><%= service.details %></p>
+            <% if (service.recommended_service_link) { %>
+                <p class="recommended-service">
+                    <strong>Recommended Services:</strong>
+                    <ul>
+                        <% JSON.parse(service.recommended_service_link).forEach((item) => { %>
+                            <li>
+                                <strong><%= item.brand %>:</strong>
+                                <a href="<%= item.link %>" target="_blank"><%= item.link %></a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </p>
+            <% } %>
+            <a href="/battery-services" class="back-btn">Back to List</a>
+        </section>
+    </main>
+</body>
+</html>

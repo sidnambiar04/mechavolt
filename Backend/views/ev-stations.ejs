@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV Stations Near Panvel</title>
+    <link rel="stylesheet" href="/css/ev-stations.css"> <!-- Add a CSS file for styling -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" /> <!-- Leaflet CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> <!-- Leaflet JS -->
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/images/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>EV Stations Near You !!!</h1>
+    </header>
+
+    <main>
+        <!-- Geolocation Button -->
+        <section class="user-location">
+            <button id="get-location-btn">Get My Location</button>
+            <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+        </section>
+
+        <!-- EV Stations List -->
+        <div style="margin-top: 40px;"></div>
+        <section class="stations-list">
+            <h2>Available EV Stations</h2>
+            <div style="margin-top: 20px;" class="stations-grid">
+                <% if (evStations && evStations.length > 0) { evStations.forEach(function(station) { %>
+                    <div class="station-card">
+                        <img src="<%= station.image %>" alt="<%= station.name %>">
+                        <h3><%= station.name %></h3>
+                        <p><strong>Time:</strong> <%= station.time %></p>
+                        <p><strong>Contact:</strong> <%= station.contact %></p>
+                        <a href="/ev-stations/<%= station.id %>" class="details-btn">View Details</a>
+                    </div>
+                <% }); } else { %>
+                    <p>No EV stations available at the moment.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MechaVolt</h3>
+                <p>At MechaVolt, we provide top-quality vehicle services with a commitment to excellence and customer satisfaction.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="/home.html">Home</a>
+                <a href="/services.html">Services</a>
+                <a href="/about.html">About Us</a>
+                <a href="/appointment.html">Book Appointment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Pillai College Of Engineering, New Panvel</p>
+                <p>Phone: +91 7506032398</p>
+                <p>Email: info@mechavolt.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([18.9894, 73.1175], 13); // Default center (Panvel)
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add EV station markers
+        const evStations = <%- JSON.stringify(evStations) %>; // Pass evStations data from the server
+        evStations.forEach((station) => {
+            L.marker([station.latitude, station.longitude])
+                .addTo(map)
+                .bindPopup(`<b>${station.name}</b><br>${station.time}<br>${station.contact}`);
+        });
+
+        // Geolocation button functionality
+        document.getElementById('get-location-btn').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const userLat = position.coords.latitude;
+                    const userLng = position.coords.longitude;
+
+                    // Center the map on the user's location
+                    map.setView([userLat, userLng], 14);
+
+                    // Add a marker for the user's location
+                    L.marker([userLat, userLng])
+                        .addTo(map)
+                        .bindPopup("You are here")
+                        .openPopup();
+                }, (error) => {
+                    alert("Unable to retrieve your location.");
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        });
+    </script>
+</body>
+</html>

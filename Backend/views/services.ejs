@@ -14,7 +14,11 @@
             </div>
             <ul class="nav-links">
                 <li><a href="/home">Home</a></li>
-                <li><a href="/login">Login/Register</a></li>
+                <% if (user) { %>
+                    <li><a href="/logout">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login/Register</a></li>
+                <% } %>
                 <li><a href="/services">Services</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contacts">Contact</a></li>
@@ -41,7 +45,7 @@
                 <div class="service-content">
                     <h3>EV Charging Station</h3>
                     <p>Access our network of fast-charging stations designed to get you back on the road quickly. Compatible with all major electric vehicle models.</p>
-                    <a href="#" class="service-btn">Learn More</a>
+                    <a href="/ev-stations" class="service-btn">Find Here</a>
                 </div>
             </div>
             <div class="service-card">
@@ -51,7 +55,7 @@
                 <div class="service-content">
                     <h3>Vehicle Repair and Servicing</h3>
                     <p>Keep your vehicle in optimal condition with our comprehensive repair and maintenance services performed by certified technicians.</p>
-                    <a href="#" class="service-btn">Learn More</a>
+                    <a href="/repair-shops" class="service-btn">Find Here</a>
                 </div>
             </div>
             <div class="service-card">
@@ -61,7 +65,7 @@
                 <div class="service-content">
                     <h3>Car Battery Repair and Servicing</h3>
                     <p>Specialized maintenance and repair services for all types of vehicle batteries, with focus on extending battery life and performance.</p>
-                    <a href="#" class="service-btn">Learn More</a>
+                    <a href="/battery-services" class="service-btn">Find Here</a>
                 </div>
             </div>
             <div class="service-card">
@@ -71,7 +75,7 @@
                 <div class="service-content">
                     <h3>Software Support and Updates</h3>
                     <p>Stay current with the latest vehicle software updates and diagnose electronic issues with our cutting-edge technical support.</p>
-                    <a href="#" class="service-btn">Learn More</a>
+                    <a href="/software-services" class="service-btn">Find Here</a>
                 </div>
             </div>
             <div class="service-card">
@@ -81,7 +85,7 @@
                 <div class="service-content">
                     <h3>Roadside Assistance</h3>
                     <p>24/7 emergency support for breakdowns, flat tires, battery issues, and more. We're just a call away whenever you need help on the road.</p>
-                    <a href="#" class="service-btn">Learn More</a>
+                    <a href="/roadside-assistance" class="service-btn">Find Here</a>
                 </div>
             </div>
             <div class="service-card">
@@ -91,17 +95,26 @@
                 <div class="service-content">
                     <h3>Vehicle Insurance</h3>
                     <p>Comprehensive insurance solutions tailored to your vehicle and driving needs with competitive rates and excellent coverage options.</p>
-                    <a href="#" class="service-btn">Learn More</a>
+                    <a href="/insurance-advisor" class="service-btn">Find Here</a>
                 </div>
             </div>
         </div>
     </section>
-
-
+    <div id="chatbot-container">
+        <button id="chatbot-button" onclick="toggleChatbot()">💬</button>
+        <div id="chatbot-iframe-container">
+            <iframe
+                id="chatbot-iframe"
+                src="https://www.chatbase.co/chatbot-iframe/m9O_0DISZ33RwcTzoWqZk"
+                frameborder="0"
+                allow="microphone"
+            ></iframe>
+        </div>
+    </div>
     <section class="cta-section" id="appointment">
         <h2>Ready to Get Your Vehicle Serviced?</h2>
         <p>Our expert technicians are ready to help you with all your vehicle needs. Book an appointment today and experience our premium service.</p>
-        <a href="#" class="cta-button">Schedule Now</a>
+        <a href="#" class="cta-button">Find Now</a>
     </section>
 
     <footer id="contact">
@@ -139,6 +152,14 @@
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
+        function toggleChatbot() {
+        const iframeContainer = document.getElementById('chatbot-iframe-container');
+        if (iframeContainer.style.display === 'none' || iframeContainer.style.display === '') {
+            iframeContainer.style.display = 'block';
+        } else {
+            iframeContainer.style.display = 'none';
+        }
+    }
     </script>
 </body>
 </html>

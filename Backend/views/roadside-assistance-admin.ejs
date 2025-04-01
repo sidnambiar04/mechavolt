@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadside Assistance</title>
+    <link rel="stylesheet" href="/css/roadside-assistance-admin.css">
+</head>
+<body>
+    <header>
+        <h1>Roadside Assistance Shops</h1>
+        <a href="/admin/dashboard">Back to Dashboard</a>
+    </header>
+
+    <main>
+        <section class="roadside-assistance-list">
+            <h2>Shops</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% roadsideShops.forEach(shop => { %>
+                        <tr>
+                            <td><%= shop.id %></td>
+                            <td><%= shop.name %></td>
+                            <td><%= shop.contact %></td>
+                            <td><%= shop.address %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

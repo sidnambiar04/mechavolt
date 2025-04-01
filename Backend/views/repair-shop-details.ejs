@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= shop.name %> - Details</title>
+    <link rel="stylesheet" href="/css/repair-shop-details.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <header>
+        <h1><%= shop.name %></h1>
+    </header>
+
+    <main>
+        <section class="shop-details">
+            <img src="<%= shop.image %>" alt="<%= shop.name %>">
+            <p><strong>Time:</strong> <%= shop.time %></p>
+            <p><strong>Address:</strong> <%= shop.address %></p>
+            <p><strong>Contact:</strong> <%= shop.contact %></p>
+            <p><strong>Services:</strong> <%= shop.services %></p>
+            <p><strong>Rating:</strong></p>
+            <div class="stars">
+                <% for (let i = 1; i <= 5; i++) { %>
+                    <% if (i <= Math.floor(shop.rating)) { %>
+                        <span>&#9733;</span> <!-- Filled star -->
+                    <% } else { %>
+                        <span>&#9734;</span> <!-- Empty star -->
+                    <% } %>
+                <% } %>
+            </div>
+            <p><strong>Service Charges:</strong></p>
+            <img src="<%= shop.detailed %>" alt="Service Charges">
+            <p><strong>Two-Wheeler Rate:</strong> <%= shop.two_wheeler_rate %></p>
+            <p><strong>Four-Wheeler Rate:</strong> <%= shop.four_heeler_rate %></p>
+            <p><strong>Google Maps:</strong> <a href="<%= googleMapsLink %>" target="_blank">View Location</a></p>
+            <% if (shop.website) { %>
+                <p><strong>Website:</strong> <a href="<%= shop.website %>" target="_blank"><%= shop.website %></a></p>
+            <% } %>
+            <a href="/repair-shops" class="back-btn">Back to List</a>
+        </section>
+    </main>
+</body>
+</html>

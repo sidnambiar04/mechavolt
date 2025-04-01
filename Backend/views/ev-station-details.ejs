@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= station.name %> - Details</title>
+    <link rel="stylesheet" href="/css/ev-station-details.css"> <!-- Add a CSS file for styling -->
+</head>
+<body>
+    <header>
+        <h1><%= station.name %></h1>
+    </header>
+    <main>
+        <section class="station-details">
+            <img src="<%= station.image %>" alt="<%= station.name %>">
+            <p><strong>Time:</strong> <%= station.time %></p>
+            <p><strong>Address:</strong> <%= station.address %></p>
+            <p><strong>Contact:</strong> <%= station.contact %></p>
+            <p><strong>Type:</strong> <%= station.type %></p>
+            <p><strong>Google Maps:</strong> <a href="<%= googleMapsLink %>" target="_blank">View Location</a></p>
+            <% if (station.website) { %>
+                <p><strong>Website:</strong> <a href="<%= station.website %>" target="_blank"><%= station.website %></a></p>
+            <% } %>
+            <a href="/ev-stations" class="back-btn">Back to List</a>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MechaVolt</h3>
+                <p>At MechaVolt, we provide top-quality vehicle services with a commitment to excellence and customer satisfaction.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="/home.html">Home</a>
+                <a href="/services.html">Services</a>
+                <a href="/about.html">About Us</a>
+                <a href="/appointment.html">Book Appointment</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Pillai College Of Engineering, New Panvel</p>
+                <p>Phone: +91 7506032398</p>
+                <p>Email: info@mechavolt.com</p>
+                <div class="social-links">
+                    <a href="#"><span>FB</span></a>
+                    <a href="#"><span>TW</span></a>
+                    <a href="#"><span>IG</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 MechaVolt. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

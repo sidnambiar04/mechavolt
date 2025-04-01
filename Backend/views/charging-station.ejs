@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Charging Stations</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Nearby EV Charging Stations</h1>
+    <div id="stations"></div>
+
+    <script>
+        // Fetch user's location
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            // Fetch nearby charging stations
+            const response = await fetch(`/api/charging-stations?lat=${lat}&lng=${lng}`);
+            const stations = await response.json();
+
+            const stationsDiv = document.getElementById("stations");
+            stations.forEach((station) => {
+                const stationDiv = document.createElement("div");
+                stationDiv.innerHTML = `
+                    <h3>${station.name}</h3>
+                    <p>Address: ${station.address}</p>
+                    <p>Rating: ${station.rating || "N/A"}</p>
+                    <p>Price: ${station.price || "N/A"}</p>
+                `;
+                stationsDiv.appendChild(stationDiv);
+            });
+        });
+    </script>
+</body>
+</html>

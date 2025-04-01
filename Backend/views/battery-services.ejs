@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Battery Repair and Servicing</title>
+    <link rel="stylesheet" href="/css/battery-services.css"> <!-- Link to the CSS file -->
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/images/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contact</a></li>
+            </ul>
+        </nav>
+        <h1>Car Battery Repair and Servicing</h1>
+    </header>
+
+    <main>
+        <section class="battery-services-list">
+            <h2>Our Battery Services</h2>
+            <div class="services-grid">
+                <% batteryServices.forEach((service) => { %>
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="<%= service.image %>" alt="<%= service.type %>">
+                        </div>
+                        <div class="service-content">
+                            <h3><%= service.type %></h3>
+                            <p><%= service.description %></p>
+                            <a href="/battery-services/<%= service.id %>" class="details-btn">Learn More</a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

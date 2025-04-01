@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadside Assistance</title>
+    <link rel="stylesheet" href="/css/roadside-assistance.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/images/icon.png" alt="MechaVolt Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contacts">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="roadside-assistance-list">
+            <h1>Roadside Assistance Shops</h1>
+            <div class="shops-container">
+                <% roadsideShops.forEach(shop => { %>
+                    <div class="shop-card">
+                        <img src="<%= shop.image %>" alt="<%= shop.name %>">
+                        <h2><%= shop.name %></h2>
+                        <p><strong>Contact:</strong> <%= shop.contact %></p>
+                        <p><strong>Address:</strong> <%= shop.address %></p>
+                        <a href="https://www.google.com/maps?q=<%= shop.latitude %>,<%= shop.longitude %>" target="_blank">
+                            View on Google Maps
+                        </a>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

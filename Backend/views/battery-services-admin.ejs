@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - <%= serviceName %></title>
+    <link rel="stylesheet" href="/css/battery-services-admin.css"> <!-- Add your admin CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard - <%= serviceName %></h1>
+        <a href="/admin/dashboard">Back to Dashboard</a>
+    </header>
+
+    <main>
+        <section class="battery-services-list">
+            <h2>Battery Services</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Recommended Service Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% batteryServices.forEach(service => { %>
+                        <tr>
+                            <td><%= service.id %></td>
+                            <td><%= service.type %></td>
+                            <td>
+                                <a href="<%= service.recommended_service_link %>" target="_blank">
+                                    View Service
+                                </a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
