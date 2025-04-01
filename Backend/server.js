@@ -133,13 +133,20 @@ app.post('/register', async (req, res) => {
         // Redirect to login page after successful registration
         res.redirect("/login");
     } catch (err) {
+        if (err.code === '23505') {
+            // Handle duplicate email error
+            console.error("Duplicate email error:", err.detail);
+            return res.status(400).render("register", { error: "User with this email already exists." });
+        }
+
         console.error("Error during registration:", err);
         res.status(500).send("Server error");
     }
 });
 
 app.get("/contacts", (req, res) => {
-    res.render("contacts", { user: req.session.user || null });
+    const success = req.query.success === 'true'; // Extract the success query parameter
+    res.render("contacts", { user: req.session.user || null, success }); // Pass success to the template
 });
 
 app.get("/services", (req, res) => {
@@ -280,6 +287,25 @@ app.get("/ev-stations/nearby", async (req, res) => {
     } catch (err) {
         console.error("Error fetching nearby EV stations:", err);
         res.status(500).send("Server error");
+    }
+});
+
+app.get("/api/ev-stations/nearby", async (req, res) => {
+    const { lat, lng } = req.query;
+
+    try {
+        // Fetch nearby EV stations within a 5km radius
+        const result = await pool.query(
+            `SELECT id, name, latitude, longitude, contact 
+             FROM EVStations 
+             WHERE earth_distance(ll_to_earth($1, $2), ll_to_earth(latitude, longitude)) < 5000`,
+            [lat, lng]
+        );
+
+        res.json(result.rows); // Send the data as JSON
+    } catch (err) {
+        console.error("Error fetching nearby EV stations:", err);
+        res.status(500).json({ error: "Server error" });
     }
 });
 
@@ -528,6 +554,24 @@ app.get("/roadside-assistance", async (req, res) => {
         res.render("roadside-assistance", { roadsideShops });
     } catch (err) {
         console.error("Error fetching roadside assistance shops:", err);
+        res.status(500).send("Server error");
+    }
+});
+
+app.post('/contacts/submit-feedback', async (req, res) => {
+    const { name, email, message } = req.body;
+
+    try {
+        // Insert the feedback into the database
+        await pool.query(
+            "INSERT INTO Feedback (name, email, message) VALUES ($1, $2, $3)",
+            [name, email, message]
+        );
+
+        // Redirect back to the contact page with a success message
+        res.redirect('/contacts?success=true');
+    } catch (err) {
+        console.error("Error saving feedback:", err);
         res.status(500).send("Server error");
     }
 });

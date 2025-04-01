@@ -27,15 +27,16 @@
             <div class="mobile-toggle" onclick="toggleMenu()">≡</div>
         </nav>
     </header>
-    <div class="cont">
-        <p>If you have any questions or feedback about our products or services,<br> please feel free to contact us through any of the<br> following channels.</p>
-        <img src="/images/activa.png" alt="Bike Image">
-    </div>
     <div class="container">
         <section class="contact-section">
+            <% if (success) { %> <!-- Use the success variable passed from the route -->
+                <div class="success-message">
+                    <p>Thank you for your feedback! We will get back to you soon.</p>
+                </div>
+            <% } %>
             <div class="contact-form">
-                <h2>Send Us a Message</h2>
-                <form action="#" method="post">
+                <h2>Share Your Feedback</h2>
+                <form action="/contacts/submit-feedback" method="POST">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
 
@@ -48,24 +49,17 @@
                     <button type="submit">Submit</button>
                 </form>
             </div>
-
-            <div class="contact-info">
-                <h2>Contact Information</h2>
-                <p><strong>Address:</strong> 123 MechaVolt Street, Mumbai, Maharashtra, India</p>
-                <p><strong>Phone:</strong> +91 1234567890</p>
-                <p><strong>Email:</strong> info@mechavolt.com</p>
-            </div>
-        </section>
-
-        <section class="map-section">
-            <h2>Our Location</h2>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.868778457008!2d72.8291456750346!3d18.93877118228185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1e07297f02b%3A0xc3b8a393962f3f4e!2sGateway%20of%20India!5e0!3m2!1sen!2sin!4v1702987295777!5m2!1sen!2sin"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <p style="margin-top: 10px; font-size: 0.9em;">Click on the map to open in Google Maps.</p>
         </section>
     </div>
+
+    <section class="map-section">
+        <h2>Our Location</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.868778457008!2d72.8291456750346!3d18.93877118228185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1e07297f02b%3A0xc3b8a393962f3f4e!2sGateway%20of%20India!5e0!3m2!1sen!2sin!4v1702987295777!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <p style="margin-top: 10px; font-size: 0.9em;">Click on the map to open in Google Maps.</p>
+    </section>
 
     <div id="chatbot-container">
         <button id="chatbot-button" onclick="toggleChatbot()">💬</button>

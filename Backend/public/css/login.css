@@ -184,6 +184,17 @@ body {
     text-decoration: underline;
 }
 
+.logo {
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
+    width: 100px; /* Set a fixed width for the logo */
+    height: 100px; /* Set a fixed height for the logo */
+    object-fit: cover; /* Ensure the logo maintains its aspect ratio */
+    border-radius: 50%; /* Make the logo circular */
+    border: 2px solid #006400; /* Add a green border around the logo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {

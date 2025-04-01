@@ -20,37 +20,43 @@
 
     <div class="register-wrapper">
         <div class="register-container">
-            <img class="logo" src="/images/bwlogo.jpg">
-            <br><br>    
+            <img class="logo" src="/images/bwlogo.jpg" alt="Logo">
             <div class="register-header">
                 <h2>Create Account</h2>
                 <p>Sign up to get started</p>
             </div>
+            <% if (typeof error !== 'undefined') { %>
+                <div class="error-message">
+                    <p><%= error %></p>
+                </div>
+            <% } %>
             <form action="/register" method="POST">
-                <div class="form-group">
-                    <label for="name">Name:</label>
+                <div class="input-group">
+                    <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
+                <div class="input-group">
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <div class="form-group">
-                    <label for="userType">User Type:</label>
+                <div class="input-group">
+                    <label for="userType">User Type</label>
                     <select id="userType" name="userType" required>
+                        <option value="">Select User Type</option>
                         <option value="Admin">Admin</option>
                         <option value="driver">Customer</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
+                <div class="input-group">
+                    <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password:</label>
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit" class="btn">Register</button>
+                <p class="login-link">Already have an account? <a href="/login">Login</a></p>
             </form>
         </div>
     </div>

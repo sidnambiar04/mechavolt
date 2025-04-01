@@ -14,6 +14,7 @@ body {
     min-height: 100vh;
     position: relative;
     color: white;
+    padding-top: 60px; /* Adjust this value based on the height of the header */
 }
 
 body::before {
@@ -34,15 +35,51 @@ body::before {
     z-index: 2;
 }
 
-/* Header Styles */
 header {
-    padding: 20px 0;
-    position: absolute; /* Changed to absolute */
+    padding: 15px 0;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: #228b22;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #4CAF50;
+}
+
+/* Add padding to the body to prevent content from overlapping the header */
+body {
+    padding-top: 60px; /* Adjust this value based on the height of the header */
 }
 
 nav {
@@ -152,40 +189,69 @@ nav {
     cursor: pointer;
 }
 
+/* Contact Information Section */
 .contact-info {
-    color: #57cc99;
-    margin-bottom: 10px;
-}
-
-/* Map Section Styles */
-.map-section {
-    margin-top: 20px;
-    background-color: white;
+    background-color: #f9f9f9; /* Light background for contrast */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 20px;
+    text-align: left;
+}
+
+.contact-info h2 {
+    color: #006400; /* Green heading */
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: #333; /* Darker text for readability */
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.contact-info p strong {
+    color: #006400; /* Green for labels */
+}
+
+.contact-info p a {
+    color: #006400; /* Green links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info p a:hover {
+    text-decoration: underline;
+}
+
+/* Map Section */
+.map-section {
+    margin-top: 30px;
+    text-align: center;
 }
 
 .map-section h2 {
-    margin-bottom: 20px;
-    color: #4CAF50;
+    color: #006400; /* Green heading */
+    font-size: 1.8rem;
+    margin-bottom: 15px;
 }
 
 .map-container {
-    width: 100%;
-    height: 400px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .map-container iframe {
     width: 100%;
-    height: 100%;
+    height: 450px;
     border: none;
 }
 
-/* Footer Styles */
 footer {
     background-color: #222;
     color: white;
@@ -246,7 +312,6 @@ footer {
     border-top: 1px solid #444;
 }
 
-
 #chatbot-container {
     position: fixed;
     bottom: 20px;
@@ -288,6 +353,18 @@ footer {
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* Success Message Styles */
+.success-message {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
 }
 
 /* Responsive Design */

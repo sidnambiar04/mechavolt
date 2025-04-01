@@ -1,198 +1,215 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f2f5;
-            height: 100vh;
-            display: flex;
-            overflow: hidden;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+}
 
-        .slideshow-container {
-            width: 60%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            background-color: #2d2f2df0;
-        }
+.slideshow-container {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-color: #2d2f2df0;
+}
 
-        .slideshow-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            aspect-ratio: 10 / 8;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
+.slideshow-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 10 / 8;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
-        .slide.active {
-            opacity: 1;
-        }
+.slide.active {
+    opacity: 1;
+}
 
-        /* Register Container with 40% width */
-        .register-wrapper {
-            width: 40%;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        }
+/* Register Container with 40% width */
+.register-wrapper {
+    width: 40%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+}
 
-        .register-container {
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-        }
+.register-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+}
 
-        .register-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+.register-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-        .logo {
-            margin-left: 37%;
-            margin-top: -20px; /* Shift the logo upwards */
-            width: 100px;
-            height: 100px;
-        }
+.register-header h2 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
 
-        .register-header h2 {
-            color: #333;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
+.register-header p {
+    color: #777;
+    font-size: 0.9rem;
+}
 
-        .register-header p {
-            color: #777;
-            font-size: 0.9rem;
-        }
+.input-group {
+    margin-bottom: 1rem;
+    position: relative;
+}
 
-        .input-group {
-            margin-bottom: 1rem;
-            position: relative;
-        }
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+}
 
-        .input-group input,
-        .input-group select {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #006400;
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.1);
+}
 
-        .input-group input:focus,
-        .input-group select:focus {
-            border-color: #006400;
-            box-shadow: 0 0 10px rgba(108, 99, 255, 0.1);
-        }
+.input-group label {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    background-color: white;
+    padding: 0 5px;
+    font-size: 0.8rem;
+    color: #006400;
+    transition: all 0.3s ease;
+}
 
-        .input-group label {
-            position: absolute;
-            top: -8px;
-            left: 12px;
-            background-color: white;
-            padding: 0 5px;
-            font-size: 0.8rem;
-            color: #006400;
-            transition: all 0.3s ease;
-        }
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: white;
+    color: #228b22;
+    font-size: 20px;
+    border: 3px solid #006400;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
 
-        .btn {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: white;
-            color: #228b22;
-            font-size: 20px;
-            border: 3px solid #006400;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-        }
+.btn:hover {
+    background-color: #45a049;
+    color: aliceblue;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
 
-        .btn:hover {
-            background-color: #45a049;
-            color: aliceblue;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-        }
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(8, 213, 12, 0.866);
+}
 
-        .btn:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 4px rgba(8, 213, 12, 0.866);
-        }
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+         rgba(255, 255, 255, 0) 0%,
+         rgba(255, 255, 255, 0.3) 50%,
+         rgba(255, 255, 255, 0) 100%
+    );
+    transition: left 0.7s ease;
+}
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                 rgba(255, 255, 255, 0) 0%,
-                 rgba(255, 255, 255, 0.3) 50%,
-                 rgba(255, 255, 255, 0) 100%
-            );
-            transition: left 0.7s ease;
-        }
+.btn:hover::before {
+    left: 100%;
+}
 
-        .btn:hover::before {
-            left: 100%;
-        }
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #777;
+}
 
-        .login-link {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: #777;
-        }
+.login-link a {
+    color: #247e44;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .login-link a {
-            color: #247e44;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.login-link a:hover {
+    text-decoration: underline;
+}
 
-        .login-link a:hover {
-            text-decoration: underline;
-        }
+/* Logo styling */
+.logo {
+    display: block;
+    margin: 0 auto; /* Center the logo horizontally */
+    width: 100px; /* Set a fixed width for the logo */
+    height: 100px; /* Set a fixed height for the logo */
+    object-fit: cover; /* Ensure the logo maintains its aspect ratio */
+    border-radius: 50%; /* Make the logo circular */
+    border: 2px solid #006400; /* Add a green border around the logo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
+/* Error message styling */
+.error-message {
+    background-color: #ffcccc; /* Light red background */
+    color: #cc0000; /* Dark red text */
+    padding: 10px;
+    border: 1px solid #cc0000;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
 
-            .slideshow-container, 
-            .register-wrapper {
-                width: 100%;
-                max-width: 100%;
-            }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
 
-            .slideshow-wrapper {
-                aspect-ratio: 16 / 9;
-            }
-        }
+    .slideshow-container, 
+    .register-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .slideshow-wrapper {
+        aspect-ratio: 16 / 9;
+    }
+}
